@@ -1,0 +1,14 @@
+#debug: true
+#spring:
+#  devtools:
+#    restart:
+#      enabled: true  #设置开启热部署
+#  freemarker:
+#    cache: false    #页面不加载缓存，修改即时生效
+weatherAPI:
+  appid: 3f118cf11d68181e759d0e186a79c73b
+  apiURL: https://api.openweathermap.org/data/2.5/weather?q=
+
+city:
+  # 城市信息可以从配置文件获取，或从数据库读取
+  value: Sydney,Wollongong,Melbourne,Shenzhen,Beijing
