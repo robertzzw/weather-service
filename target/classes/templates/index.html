@@ -24,16 +24,20 @@
                 success: function(result) {
                     // alert("200");
                     if (!result.err) {
-                        var time = result.dt;
-                        var dateObj = new Date(time);
+                        var dateObj = new Date();
                         var weather = result.weather[0].description;
                         var datelist = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+                        var month = dateObj.getMonth()+1 < 10 ?
+                            "0" + (dateObj.getMonth()+1) : dateObj.getMonth()+1;
 
                         var day = dateObj.getDate() < 10 ? "0" + dateObj.getDate() : dateObj.getDate();
+                        var hour = dateObj.getHours() < 10 ? "0" + (dateObj.getHours()+1) : dateObj.getHours();
+                        var minute = dateObj.getMinutes() < 10 ?
+                            "0" + (dateObj.getMinutes()+1) : dateObj.getMinutes();
 
                         $("#time").text(datelist[dateObj.getDay()] + ' ' + dateObj.getFullYear() + '-'
-                            + (dateObj.getMonth()+1) + '-' + day + ' '
-                            + dateObj.getHours() + ':' + dateObj.getMinutes());
+                            + month + '-' + day + ' '
+                            + hour + ':' + minute);
                         $("#weather").text(weather);
                         $("#temperature").text((parseFloat(result.main.temp) - 273.15).toFixed(2) + '℃');
                         $("#wind").text(result.wind.speed + 'km/h');
